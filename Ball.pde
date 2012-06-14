@@ -13,8 +13,8 @@ class Ball {
     pattern = _pattern;
     pad = _pad;
     
-    // color setting ----------
     
+    // set color
     float num = id*0.2;
     float num2 = 0;
 //    // for iphone (5 balls)
@@ -29,13 +29,9 @@ class Ball {
         num2 = num - 1;
         num = 1;
     }
-    
     float revNum = 1 - num;
     sColor = color(num*255, revNum*255, (1-num2)*255, 255);
     fColor = color(num*255, revNum*255, (1-num2)*255, 0.3*255);
-    
-    // ------------------------
-    
   }
   
   void render(){
@@ -59,8 +55,6 @@ class Ball {
       touch = (_touch==1);
       x = int(pad.w*_x);
       y = int(pad.h*(1-_y));
-      
-      //println(id+" "+_x+","+_y+" | "+x+","+y);
     }
   }
 }

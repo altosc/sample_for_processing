@@ -44,17 +44,13 @@ void setup()
 void draw() 
 {
   background(0);
-  //noStroke();
   
   translate(width/2.0, height/2.0);
+  
   rotateX(rotx);
   rotateY(roty);
-  //rotateX(rotx);
-  //rotateY(roty);
   
   drawDevice();
-  translate(0,0,z+1);
-  
 }
 
 void oscEvent(OscMessage mes) {
@@ -66,14 +62,9 @@ void oscEvent(OscMessage mes) {
     float _x = mes.get(0).floatValue();
     float _y = mes.get(1).floatValue();
     float _z = mes.get(2).floatValue();
-    
-    // warito umaku itta
-    roty = map(_x, -1.0, 1.0, -PI/2, PI/2);
-    rotx = map(_y, -1.0, 1.0, -PI/2, PI/2);
-    
-    //rotx = asin(_x);
-    //roty = -atan2(_x-offsetY,_x-offsetY);
-//    rotz = map(_z, -1.0, 1.0, -PI/2, PI/2);
+    rotx = _y*PI/2;
+    roty = _x*PI/2;
+    if(0<_z) roty = PI - roty;
   }
 }
 
@@ -87,7 +78,6 @@ void drawDevice() {
   vertex( x,  y,  z, 1, 1);
   vertex(-x,  y,  z, 0, 1);
   endShape();
-  
   
   // back
   beginShape(QUADS);

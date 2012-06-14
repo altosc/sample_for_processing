@@ -3,7 +3,7 @@ class Pad extends UI {
   Ball[] balls = new Ball[10];
   
   Pad(String rootOfBallsPattern) {
-    super(6,42,468,468);
+    super(6,42,470,470);
     init(rootOfBallsPattern);
   }
   

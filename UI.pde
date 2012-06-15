@@ -1,13 +1,11 @@
 class UI {
   
-  int x,y,w,h;
+  int x,y;
   String pattern = "";
   
-  UI(int _x, int _y, int _w, int _h){
+  UI(int _x, int _y){
     x = _x;
     y = _y;
-    w = _w;
-    h = _h;
   }
   
   void render(){

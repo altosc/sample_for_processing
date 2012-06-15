@@ -4,7 +4,7 @@ class Toggle extends UI {
   boolean on = false;
   
   Toggle(int _num, int _x, int _y){
-    super(_x,_y,90,28);
+    super(_x,_y);
     skinOn  = loadImage("assets/toggle/on/"+_num+".png");
     skinOff = loadImage("assets/toggle/off/"+_num+".png");
   }

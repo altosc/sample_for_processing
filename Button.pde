@@ -4,7 +4,7 @@ class Button extends UI {
   boolean on = false;
   
   Button(int _num, int _x, int _y){
-    super(_x,_y,90,28);
+    super(_x,_y);
     skinOn  = loadImage("assets/button/on/"+_num+".png");
     skinOff = loadImage("assets/button/off/"+_num+".png");
   }

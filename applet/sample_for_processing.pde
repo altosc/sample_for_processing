@@ -1,12 +1,9 @@
-/*
- ---------------------------------
- 
- ALT OSC | Sample for Processing
- 
- ---------------------------------
- 
- http://altosc.com
-
+/**
+ * ALT OSC | Processing Sample Code ver.1
+ * 
+ * Drag mouse to rotate cube. Demonstrates use of u/v coords in 
+ * vertex() and effect on texture(). The textures get distorted using
+ * the P3D renderer as you can see, but they look great using OPENGL.
 */
 
 import oscP5.*;
@@ -38,15 +35,14 @@ void draw()
 }
 
 void oscEvent(OscMessage mes) {
-    
   //mes.print();
-  String pt = mes.addrPattern();
+  device.listen(mes);
   
-  if(pt.equals("/ALTOSC/accelerometer")) {
+  if(mes.addrPattern().equals("/ALTOSC/accelerometer")) {
     
     device.listen(mes);
   
-  }else if(pt.equals("/ALTOSC/mode")){
+  }else if(mes.addrPattern().equals("/ALTOSC/mode")){
     
     device.display.listen(mes);
     
@@ -54,30 +50,19 @@ void oscEvent(OscMessage mes) {
    
     for(int i=0; i<10; i++){
       int num = i+1;
-      if(pt.equals("/ALTOSC/Apad/"+num)){
+      if(mes.addrPattern().equals("/ALTOSC/Apad/"+num)){
         
         device.display.Apad.balls[i].listen(mes);
-        return;
         
-      }else if(pt.equals("/ALTOSC/Bpad/"+num)){
+      }else if(mes.addrPattern().equals("/ALTOSC/Bpad/"+num)){
         
         device.display.Bpad.balls[i].listen(mes);
-        return;
         
-      }else if(pt.equals("/ALTOSC/Bpad/ballcount")){
+      }else if(mes.addrPattern().equals("/ALTOSC/Bpad/ballcount")){
         
         device.display.Bpad.listen(mes);
-        return;
       
-      }else if(pt.equals("/ALTOSC/toggle/"+num)){
-        
-        device.display.toggles[i].listen(mes);
-        return;
-        
-      }else if(pt.equals("/ALTOSC/button/"+num)){
-        
-        device.display.buttons[i].listen(mes);
-        return;
+      }else{
         
       }
     }

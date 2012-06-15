@@ -1,30 +1,34 @@
 class Display {
   
-  int x,y;
-  int w = 480;
-  int h = 640;
+  int x,y,w,h;
   String mode  = "A";
-  PImage skinA = loadImage("assets/iPad-A.png");
-  PImage skinB = loadImage("assets/iPad-B.png");
-  Apad Apad = new Apad();
-  Bpad Bpad = new Bpad();
-  Toggle[] toggles = new Toggle[10];
-  Button[] buttons = new Button[10];
+  PImage skinA, skinB;
+  Apad Apad;
+  Bpad Bpad;
+  UI[] toggles = new UI[10];
+  UI[] buttons = new UI[10];
 
   Display(int _x, int _y){
     
     x = _x;
     y = _y;
+    w = 480;
+    h = 640;
+    
+    skinA = loadImage("assets/iPad-A.png");
+    skinB = loadImage("assets/iPad-B.png");
     
     // UIs
+    Apad  = new Apad("/ALTOSC/Apad/");
+    Bpad  = new Bpad("/ALTOSC/Bpad/");
     for(int i=0; i<5; i++){
       int __x = 12+92*i;
       
-      toggles[i] = new Toggle((i+1), __x, 560);
-      buttons[i] = new Button((i+1), __x, 598);
+      toggles[i] = new Toggle((i+1), __x, 560).setPattern("/ALTOSC/toggle/"+(i+1));
+      buttons[i] = new Button((i+1), __x, 598).setPattern("/ALTOSC/button/"+(i+1));
       
-      toggles[i+5] = new Toggle((i+6), __x, 560);
-      buttons[i+5] = new Button((i+6), __x, 598);
+      toggles[i+5] = new Toggle((i+6), __x, 560).setPattern("/ALTOSC/toggle/"+(i+6));
+      buttons[i+5] = new Button((i+6), __x, 598).setPattern("/ALTOSC/button/"+(i+6));
     }
   }
   
@@ -34,7 +38,7 @@ class Display {
     translate(x,y);
     
     if(mode.equals("A")){
-      translate(0, 0, -2);
+      translate(0, 0, -3);
       Apad.render();
       translate(0, 0, 1);
       noStroke();
@@ -46,7 +50,7 @@ class Display {
       }
     }
     if(mode.equals("B")){
-      translate(0, 0, -2);
+      translate(0, 0, -3);
       Bpad.render();
       translate(0, 0, 1);
       noStroke();

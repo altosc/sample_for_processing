@@ -1,12 +1,10 @@
-class Button {
+class Button extends UI {
   
-  int x,y;
   PImage skinOn,skinOff;
   boolean on = false;
   
   Button(int _num, int _x, int _y){
-    x = _x;
-    y = _y;
+    super(_x,_y);
     skinOn  = loadImage("assets/button/on/"+_num+".png");
     skinOff = loadImage("assets/button/off/"+_num+".png");
   }
@@ -17,7 +15,10 @@ class Button {
   }
   
   void listen(OscMessage mes){
-    float _touch = mes.get(0).intValue();
-    on = (_touch==1);
+    if(mes.addrPattern().equals(pattern)){
+      
+      float _touch = mes.get(0).intValue();
+      on = (_touch==1);
+    }
   }
 }

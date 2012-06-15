@@ -1,27 +1,18 @@
 class Device {
   
-  PImage front_tex = loadImage("assets/iPad-front.png");
-  PImage back_tex  = loadImage("assets/iPad-back.png");
-  Display display  = new Display(-480/2,-640/2);
+  PImage front_tex,back_tex;
+  Display display;
   float rotx = 0;
   float roty = 0;
-  float rotx_old = 0;
-  float roty_old = 0;
-  int counter = 5;
 
-  Device(){}
+  Device(){
+    
+    front_tex = loadImage("assets/iPad-front.png");
+    back_tex  = loadImage("assets/iPad-back.png");
+    display = new Display(-480/2,-640/2);
+  }
   
   void render(){
-    
-    // for detect accelerometer enabled or not
-    if( rotx==rotx_old && roty==roty_old ){
-      if(counter<=0)  rotx = roty = 0;
-      else           counter--;
-    }else{
-      counter = 5;
-    }
-    rotx_old = rotx;
-    roty_old = roty;
     
     translate(width/2.0, height/2.0);
   
@@ -31,7 +22,7 @@ class Device {
     
     float x = 600/2;
     float y = 783/2;
-    float z = 5;
+    float z = 4;
   
     // front
     display.render();
@@ -60,5 +51,6 @@ class Device {
     rotx = _y*PI/2;
     roty = _x*PI/2;
     if(0<_z) roty = PI - roty;
+    //display.listen(mes);
   }
 }

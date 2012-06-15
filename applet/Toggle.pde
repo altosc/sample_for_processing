@@ -1,12 +1,10 @@
-class Toggle {
+class Toggle extends UI {
   
-  int x,y;
   PImage skinOn,skinOff;
   boolean on = false;
   
   Toggle(int _num, int _x, int _y){
-    x = _x;
-    y = _y;
+    super(_x,_y);
     skinOn  = loadImage("assets/toggle/on/"+_num+".png");
     skinOff = loadImage("assets/toggle/off/"+_num+".png");
   }
@@ -17,7 +15,9 @@ class Toggle {
   }
   
   void listen(OscMessage mes){
-    float _touch   = mes.get(0).intValue();
-    on = (_touch==1);
+    if(mes.addrPattern().equals(pattern)){
+      float _touch   = mes.get(0).intValue();
+      on = (_touch==1);
+    }
   }
 }

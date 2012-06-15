@@ -1,95 +1,82 @@
-class Pad extends UI {
+class Pad {
   
+  int x = 6;
+  int y = 42;
   int w = 470;
   int h = 470;
-  Ball[] balls = new Ball[10];
   
-  Pad(String rootOfBallsPattern) {
-    super(6,42);
-    init(rootOfBallsPattern);
+  Pad() {
+    init();
   }
   
-  void init(String rootOfBallsPattern){
-    // override in subclasses
-    for(int i=0; i<10; i++){
-      int num = i+1;
-      balls[i] = new Ball(num, rootOfBallsPattern + num, this);
-    }
+  void init(){
+    // for override
   }
   
   void render(){
     pushMatrix();
-    translate(x, y);
+    translate(x, y,-2);
     
     // self
     noStroke();
     fill(23,23,23);
     rect(0, 0, w, h);
     
-    // children
-    for(int i=0; i<balls.length; i++) balls[i].render();
+    translate(0,0,2);
+    renderBalls();
     
     popMatrix();
   }
   
-  void listen(OscMessage mes){
-    for(int i=0; i<balls.length; i++) balls[i].listen(mes);
+  void renderBalls(){
+    // for override
   }
 }
 
 class Apad extends Pad {
   
-  Apad(String rootOfBallsPattern) {
-    super(rootOfBallsPattern);
+  Aball[] balls;
+  
+  Apad() {
+    super();
   }
   
-  void init(String rootOfBallsPattern){
+  void init(){
+   balls = new Aball[10];
    for(int i=0; i<10; i++){
       int num = i+1;
-      balls[i] = new Aball(num, rootOfBallsPattern + num, this);
+      balls[i] = new Aball(num, this);
     }
+  }
+  
+  void renderBalls(){
+    for(int i=0; i<balls.length; i++) balls[i].render();
   }
 }
 
 class Bpad extends Pad {
   
+  Bball[] balls;
   int ballcount = 10;
   
-  Bpad(String rootOfBallsPattern){
-    super(rootOfBallsPattern);
+  Bpad(){
+    super();
   }
   
-  void init(String rootOfBallsPattern){
+  void init(){
+    balls = new Bball[10];
     for(int i=0; i<10; i++){
       int num = i+1;
-      balls[i] = new Bball(num, rootOfBallsPattern + num, this);
+      balls[i] = new Bball(num, this);
     } 
   }
   
-  void render(){
-    pushMatrix();
-    translate(x, y);
-    
-    // self
-    noStroke();
-    fill(23,23,23);
-    rect(0, 0, w, h);
-    
-    // children
-    for(int i=0; i<ballcount; i++) balls[i].render();
-    
-    popMatrix();
+  void renderBalls(){
+    for(int i=0; i<balls.length; i++) balls[i].render();
   }
   
   void listen(OscMessage mes){
-    super.listen(mes);
-    if(mes.addrPattern().equals(pattern)){
-      
-      int _count   = mes.get(0).intValue();
-      
-      ballcount = _count;
-      
-      println("ballcount:"+ballcount);
-    }
+    int _count   = mes.get(0).intValue();
+    ballcount = _count;
   }
 }

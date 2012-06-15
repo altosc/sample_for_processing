@@ -1,16 +1,17 @@
 class Button extends UI {
   
+  PImage skinOn,skinOff;
   boolean on = false;
   
-  Button(int _x, int _y){
+  Button(int _num, int _x, int _y){
     super(_x,_y,90,28);
+    skinOn  = loadImage("assets/button/on/"+_num+".png");
+    skinOff = loadImage("assets/button/off/"+_num+".png");
   }
   
   void render(){
-    noStroke();
-    if(on) fill(42,60,168);
-    else   fill(22,31,87);
-    rect(x, y, w, h);
+    if(on) image(skinOn, x, y);
+    else   image(skinOff, x, y);
   }
   
   void listen(OscMessage mes){

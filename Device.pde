@@ -4,7 +4,6 @@ class Device {
   Display display;
   float rotx = 0;
   float roty = 0;
-  float rotz = 0;
 
   Device(){
     
@@ -23,7 +22,7 @@ class Device {
     
     float x = 600/2;
     float y = 783/2;
-    float z = 1;
+    float z = 4;
   
     // front
     display.render();

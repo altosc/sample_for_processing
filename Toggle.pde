@@ -1,22 +1,17 @@
 class Toggle extends UI {
   
+  PImage skinOn,skinOff;
   boolean on = false;
   
-  Toggle(int _x, int _y){
+  Toggle(int _num, int _x, int _y){
     super(_x,_y,90,28);
+    skinOn  = loadImage("assets/toggle/on/"+_num+".png");
+    skinOff = loadImage("assets/toggle/off/"+_num+".png");
   }
   
   void render(){
-    
-    strokeWeight(1);
-    stroke(22, 31, 87);
-    noFill();
-    rect(x, y, w, h);
-    
-    noStroke();
-    if(on) fill(42, 60, 168);
-    else   fill(26, 26, 26);
-    rect(x+5, y+5, w-9, h-9);
+    if(on) image(skinOn, x, y);
+    else   image(skinOff, x, y);
   }
   
   void listen(OscMessage mes){

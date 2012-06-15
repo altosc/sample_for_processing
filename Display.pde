@@ -24,11 +24,11 @@ class Display {
     for(int i=0; i<5; i++){
       int __x = 12+92*i;
       
-      toggles[i] = new Toggle(__x, 560).setPattern("/ALTOSC/toggle/"+(i+1));
-      buttons[i] = new Button(__x, 598).setPattern("/ALTOSC/button/"+(i+1));
+      toggles[i] = new Toggle((i+1),__x, 560).setPattern("/ALTOSC/toggle/"+(i+1));
+      buttons[i] = new Button((i+1),__x, 598).setPattern("/ALTOSC/button/"+(i+1));
       
-      toggles[i+5] = new Toggle(__x, 560).setPattern("/ALTOSC/toggle/"+(i+6));
-      buttons[i+5] = new Button(__x, 598).setPattern("/ALTOSC/button/"+(i+6));
+      toggles[i+5] = new Toggle((i+6),__x, 560).setPattern("/ALTOSC/toggle/"+(i+6));
+      buttons[i+5] = new Button((i+6),__x, 598).setPattern("/ALTOSC/button/"+(i+6));
     }
   }
   
@@ -38,16 +38,24 @@ class Display {
     translate(x,y);
     
     if(mode.equals("A")){
+      translate(0, 0, -3);
       Apad.render();
+      translate(0, 0, 1);
+      noStroke();
       image(skinA, 0, 0);
+      translate(0, 0, 1);
       for(int i=0; i<5; i++){
         toggles[i].render();
         buttons[i].render();
       }
     }
     if(mode.equals("B")){
+      translate(0, 0, -3);
       Bpad.render();
+      translate(0, 0, 1);
+      noStroke();
       image(skinB, 0, 0);
+      translate(0, 0, 1);
       for(int i=5; i<10; i++){
         toggles[i].render();
         buttons[i].render();

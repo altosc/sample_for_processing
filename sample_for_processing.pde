@@ -36,7 +36,5 @@ void draw()
 
 void oscEvent(OscMessage mes) {
   //mes.print();
-  
-  device.display.listen(mes);
   device.listen(mes);
 }

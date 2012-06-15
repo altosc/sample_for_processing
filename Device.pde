@@ -54,5 +54,6 @@ class Device {
       roty = _x*PI/2;
       if(0<_z) roty = PI - roty;
     }
+    display.listen(mes);
   }
 }

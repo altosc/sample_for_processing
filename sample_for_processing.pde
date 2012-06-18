@@ -27,7 +27,7 @@ void setup()
   
   device = new Device();
   
-  // start osc listening
+  // start osc updateing
   oscP5 = new OscP5(this,10001);
 }
 
@@ -44,11 +44,11 @@ void oscEvent(OscMessage mes) {
   
   if(pt.equals("/ALTOSC/accelerometer")) {
     
-    device.listen(mes);
+    device.update(mes);
   
   }else if(pt.equals("/ALTOSC/mode")){
     
-    device.display.listen(mes);
+    device.display.update(mes);
     
   }else{
    
@@ -56,27 +56,27 @@ void oscEvent(OscMessage mes) {
       int num = i+1;
       if(pt.equals("/ALTOSC/Apad/"+num)){
         
-        device.display.Apad.balls[i].listen(mes);
+        device.display.Apad.balls[i].update(mes);
         return;
         
       }else if(pt.equals("/ALTOSC/Bpad/"+num)){
         
-        device.display.Bpad.balls[i].listen(mes);
+        device.display.Bpad.balls[i].update(mes);
         return;
         
       }else if(pt.equals("/ALTOSC/Bpad/ballcount")){
         
-        device.display.Bpad.listen(mes);
+        device.display.Bpad.update(mes);
         return;
       
       }else if(pt.equals("/ALTOSC/toggle/"+num)){
         
-        device.display.toggles[i].listen(mes);
+        device.display.toggles[i].update(mes);
         return;
         
       }else if(pt.equals("/ALTOSC/button/"+num)){
         
-        device.display.buttons[i].listen(mes);
+        device.display.buttons[i].update(mes);
         return;
         
       }

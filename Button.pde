@@ -16,7 +16,7 @@ class Button {
     else   image(skinOff, x, y);
   }
   
-  void listen(OscMessage mes){
+  void update(OscMessage mes){
     float _touch = mes.get(0).intValue();
     on = (_touch==1);
   }

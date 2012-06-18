@@ -61,7 +61,7 @@ class Display {
     popMatrix();
   }
   
-  void listen(OscMessage mes){
+  void update(OscMessage mes){
     String _mode   = mes.get(0).stringValue();
     mode = _mode;
   }

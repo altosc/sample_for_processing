@@ -44,7 +44,7 @@ class Bball extends Ball {
    super(_id, _pad); 
   }
   
-  void listen(OscMessage mes){
+  void update(OscMessage mes){
     
     float _x   = mes.get(0).floatValue();
     float _y   = mes.get(1).floatValue();
@@ -74,7 +74,7 @@ class Aball extends Ball {
     }
   }
   
-  void listen(OscMessage mes){
+  void update(OscMessage mes){
     
     float _x   = mes.get(0).floatValue();
     float _y   = mes.get(1).floatValue();

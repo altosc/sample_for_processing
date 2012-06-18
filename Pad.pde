@@ -75,7 +75,7 @@ class Bpad extends Pad {
     for(int i=0; i<balls.length; i++) balls[i].render();
   }
   
-  void listen(OscMessage mes){
+  void update(OscMessage mes){
     int _count   = mes.get(0).intValue();
     ballcount = _count;
   }

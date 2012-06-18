@@ -53,7 +53,7 @@ class Device {
     endShape();
   }
   
-  void listen(OscMessage mes){
+  void update(OscMessage mes){
     float _x = mes.get(0).floatValue();
     float _y = mes.get(1).floatValue();
     float _z = mes.get(2).floatValue();

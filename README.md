@@ -1,6 +1,6 @@
 #Sample for Processing
 
-[capture](http://altosc.com/img/capture-sample_for_processing.png)
+<img src="http://altosc.com/img/capture-sample_for_processing.png" width="400">
 
 <http://altosc.com>
 

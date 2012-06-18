@@ -1,9 +1,5 @@
-#ALT OSC | Sample for Processing
+#Sample for Processing
 
-http://altosc.com<http://altosc.com>
+<http://altosc.com>
 
-##other sample codes
-https://github.com/altosc<https://github.com/altosc>
-
-This code require "oscP5" by Andreas Schlegel
-http://www.sojamo.de/libraries/oscP5/
+This code require ["oscP5"](http://www.sojamo.de/libraries/oscP5/) by Andreas Schlegel

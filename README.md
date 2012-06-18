@@ -1,6 +1,6 @@
 #Sample for Processing
 
-[image]: http://altosc.com/img/capture-sample_for_processing.png
+![capture](http://altosc.com/img/capture-sample_for_processing.png)
 
 <http://altosc.com>
 

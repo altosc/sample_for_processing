@@ -72,7 +72,7 @@ class Bpad extends Pad {
   }
   
   void renderBalls(){
-    for(int i=0; i<balls.length; i++) balls[i].render();
+    for(int i=0; i<ballcount; i++) balls[i].render();
   }
   
   void update(OscMessage mes){

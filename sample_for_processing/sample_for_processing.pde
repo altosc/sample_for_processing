@@ -28,7 +28,7 @@ Device device;
 
 void setup() 
 {
-  size(720, 1024, OPENGL);
+  size(660, 840, OPENGL);
   frameRate(24);
   smooth();
   textureMode(NORMALIZED);
